@@ -3,7 +3,6 @@ package com.ECom.Ecommerce_App.services;
 import com.ECom.Ecommerce_App.models.Product;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,5 +17,12 @@ public class ProductService {
 
     public List<Product> getProducts() {
         return products;
+    }
+
+    public Product getProductById(int productId) {
+//        return products.get(productId);
+        return products.stream()
+                .filter(product -> product.getProductId() == productId)
+                .findFirst().orElse(new Product(0, "No product found", 0.0));
     }
 }
