@@ -30,4 +30,9 @@ public class ProductService {
     public void addProduct(Product product) {
         products.add(product);
     }
+
+    public void updateProduct(Product product) {
+        products.removeIf(product1 -> product1.getProductId() == product.getProductId());
+        products.add(product);
+    }
 }
