@@ -1,12 +1,14 @@
 package com.ECom.Ecommerce_App.services;
 
 import com.ECom.Ecommerce_App.models.Product;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 @Service
 public class ProductService {
 
@@ -15,10 +17,6 @@ public class ProductService {
             new Product(2, "Banana", 20.0),
             new Product(3, "Orange", 30.0)
     ));
-
-    public List<Product> getProducts() {
-        return products;
-    }
 
     public Product getProductById(int productId) {
 //        return products.get(productId);
@@ -34,5 +32,9 @@ public class ProductService {
     public void updateProduct(Product product) {
         products.removeIf(product1 -> product1.getProductId() == product.getProductId());
         products.add(product);
+    }
+
+    public void deleteProduct(int productId) {
+        products.removeIf(product -> product.getProductId() == productId);
     }
 }

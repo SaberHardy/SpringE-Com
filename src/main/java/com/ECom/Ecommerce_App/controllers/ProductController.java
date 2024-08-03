@@ -14,7 +14,7 @@ public class ProductController {
 
     @GetMapping("/products")
     public List<Product> getProducts() {
-       return productService.getProducts();
+        return productService.getProducts();
     }
 
     @GetMapping("/products/{productId}")
@@ -31,5 +31,10 @@ public class ProductController {
     @PutMapping("/products")
     public void updateProduct(@RequestBody Product product) {
         productService.updateProduct(product);
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public void deleteProduct(@PathVariable int productId) {
+        productService.deleteProduct(productId);
     }
 }
