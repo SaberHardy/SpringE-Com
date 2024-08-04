@@ -33,7 +33,11 @@ public class ProductService {
         //                .filter(product -> product.getProductId() == productId)
         //                .findFirst().orElse(new Product(0, "No product found", 0.0));
 
-        return productRepo.findById(productId).orElse(new Product(0, "No product found", 0.0));
+        return productRepo.findById(productId).orElse(
+                new Product(0,
+                        "No product found",
+                        0.0,
+                        null));
     }
 
     public void addProduct(Product product) {
