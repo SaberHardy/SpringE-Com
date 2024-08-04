@@ -3,6 +3,8 @@ package com.ECom.Ecommerce_App.controllers;
 import com.ECom.Ecommerce_App.models.Product;
 import com.ECom.Ecommerce_App.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,14 +14,15 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    // Send a response entity with the list of products
     @GetMapping("/products")
-    public List<Product> getProducts() {
-        return productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts() {
+        return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
     }
 
     @GetMapping("/products/{productId}")
-    public Product getProductById(@PathVariable int productId) {
-        return productService.getProductById(productId);
+    public ResponseEntity<Product> getProductById(@PathVariable int productId) {
+        return new ResponseEntity<>(productService.getProductById(productId), HttpStatus.OK);
     }
 
     @PostMapping("/products")
